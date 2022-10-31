@@ -8,28 +8,127 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- TODO: OK, now I defintely know I should change some code around. -->
-    <div class="wrapper">
-        <header>
-            <h1>Password Generator</h1>
-        </header>
-        <div class="card">
+    <!-- class="wrapper" -->
+    <header id="top">
+        <!-- We need an ID here so that we can jump back up to the top -->
+        <img src="assets/images/my_killer_robot.jpg" alt="pfp" width="100" height="100">
+        <h1>Password Generator</h1>
+    </header>
+    <main>
+        <section class="card">
             <div class="card-header">
                 <h2>Generate a Password</h2>
+                <blockquote><strong>Note:</strong> None of these options provide a SHA encryption as far as I can tell. You may want to find something that does if you need something really long.</blockquote>
             </div>
-            <div class="card-body">
-                <textarea
-                    readonly
-                    id="password"
-                    placeholder="Your Secure Password"
-                    aria-label="Generated Password"
-                ></textarea>
+            <!-- Note: I'm kinda new to using aria tags, so pardon me if they aren't all perfect -->
+            <div class="control" id="len">
+                <fieldset role="group">
+                    <legend aria-label="Length">Length</legend>
+                    <dl>
+                        <dt>
+                            <input type="radio" id="use_len_0" name="len_major" value="0"  checked aria-checked="true"/>
+                            <label for="use_len_0" aria-label="128 or less">128 or less</label>
+                            <input type="radio" id="use_len_256" name="len_major" value="256" aria-checked="false" />
+                            <label for="use_len_256" aria-label="256">256</label>
+                            <input type="radio" id="use_len_512" name="len_major" value="512" aria-checked="false" />
+                            <label for="use_len_512" aria-label="512">512</label>
+                            <input type="radio" id="use_len_1024" name="len_major" value="1024" aria-checked="false" />
+                            <label for="use_len_1024" aria-label="1024">1024</label>
+                            <input type="radio" id="use_len_2048" name="len_major" value="2048" aria-cheecked="false" />
+                            <label for="use_len_2048" aria-label="2048">2048</label>
+                        </dt>
+                        <dd></dd><!-- this is intentionally blank -->
+                        <dt>
+                            <!-- TODO: disable if use_len_0 is not checked -->
+                            <label for="len_slide" aria-label="Length of a password (between 6 and 128 characters)">Length</label>
+                            <input type="range" id="len_slide" name="len_slide" min="6" max="128" step="1" value="16">
+                            <input type="number" id="len_num" name="len_num" min="6" max="128" step="1" value="16">        
+                        </dt>
+                        <dd id="len_msg"></dd><!-- if under 16 char, state this is a weak password -->
+                    </dl>
+                </fieldset>
             </div>
-            <div class="card-footer">
-                <button id="generate" class="btn">Generate Password</button>
+            <div class="control" id="opts">
+                <fieldset role="group">
+                    <legend aria-label="Included options">Include...</legend>
+                    <dl>
+                        <dt>
+                            <input type="checkbox" id="use_opt_symbols" name="pw_options" value="symbols"  checked aria-checked="true"/>
+                            <label for="use_opt_symbols" aria-label="Include Symbols">Symbols</label>
+                        </dt>
+                        <dd>Use symbol characters, e.g. <code>! @ # $ % ^ &amp; * - _ = + ?</code></dd>
+                        <dt>
+                            <input type="checkbox" id="use_opt_numbers" name="pw_options" value="numbers"  checked aria-checked="true"/>
+                            <label for="use_opt_numbers" aria-label="Include Numbers">Numbers</label>
+                        </dt>
+                        <dd>Use characters <code>0</code> through <code>9</code></dd>
+                        <dt>
+                            <input type="checkbox" id="use_opt_uppercase" name="pw_options" value="lowercase"  checked aria-checked="true"/>
+                            <label for="use_opt_uppercase" aria-label="Include Uppercase characters">Uppercase</label>
+                        </dt>
+                        <dd>Use characters <code>A</code> through <code>Z</code></dd>
+                        <dt>
+                            <input type="checkbox" id="use_opt_lowercase" name="pw_options" value="uppercase"  checked aria-checked="true"/>
+                            <label for="use_opt_lowercase" aria-label="Include Lowercase characters">Lowercase</label>
+                        </dt>
+                        <dd>Use characters <code>a</code> through <code>z</code></dd>
+                        
+                        <dt>
+                            <input type="checkbox" id="use_opt_similar" name="pw_options" value="similar" aria-checked="false" />
+                            <label for="use_opt_similar" aria-label="Include similar characters (Not recommended)">Similar characters</label>        
+                        </dt>
+                        <dd>Use similar characters, e.g. <code>i I l 1 | L o 0 O</code></dd>
+                        <dd>It is recommended that you don't use this.</dd>
+                        <dt>
+                            <input type="checkbox" id="use_opt_ambiguous" name="pw_options" value="ambiguous" aria-checked="false" />
+                            <label for="use_opt_ambiguous" aria-label="Include amgibuous characters (Not recommended)">Ambiguous characters</label>        
+                        </dt>
+                        <dd>Use characters such as <code>( ) { } [ ] / \ ' " ~ , ; : . &lt; &gt;</code></dd>
+                        <dd>It is recommended that you don't use this.</dd>
+                    </dl>
+                </fieldset>
             </div>
-        </div>
-    </div>
+            <div>
+                <button id="generate" title="Click to generate a password" aria-label="Generate Password">Generate Password</button>
+            </div>
+            <div>
+                <!-- Putting this is a fieldset because they look good around single textareas -->
+                <fieldset role="textbox">
+                    <legend aria-label="Generated Password">Generated Password</legend>
+                    <!-- TODO: Set width and height of the textarea -->
+                    <textarea
+                        readonly
+                        aria-readonly="true"
+                        id="password"
+                        placeholder="Your Secure Password"
+                        aria-placeholder="Your Secure Password"
+                    ></textarea>
+                </fieldset>
+            </div>
+            <div>
+                <!-- TODO: Should I stick this in the fieldset above? -->
+                <button id="copy" title="Click to copy to clipboard" aria-label="Copy password to clipboard">Copy Password</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <section>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="https://jrcharney.github.io/">Home</a></li>
+                    <li><a href="https://github.com/jrcharney/">Github</a></li>
+                    <li><a href="https://codepen.io/jrcharney/">CodePen</a></li>
+                    <li><a href="https://dev.to/jrcharney/">Dev.to</a></li>
+                </ul>
+            </section>
+            <!-- TODO: veritcal hr -->
+            <section></section>
+        </section>
+        <section>
+            <p>&copy; 2022 | A JRCharney Production | <img src="assets/images/US-United-States-Flag-icon.png" alt="US Flag" width="16px" height="16px"> Coded in America</p>
+        </section>
+    </footer>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

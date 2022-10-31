@@ -1,0 +1,51 @@
+/* File: assets/css/theme.css
+ * Info: Color theme
+ * TODO: Try not to make it "pumpkin spiced" this time.
+ * TODO: Try using rgba instead of hex this time
+ */
+
+:root {
+    /* theme hue */
+    --hue: 196;     /* TODO: make this adjustable. Value between 0 and 360 */
+    /* saturatio is beteen 0 (pale) and 100 (vibrant) */
+    /* lightnes is betweenn 0 (black) and 100 (white), typically 50 */
+
+    /* shadows */
+    /* box shadows and text shadows should be defined the same. */
+    --bsh: 3px 3px 5px #222;    /* box shadow */
+    --tsh: #222 3px 3px 5px;    /* text shadow */
+
+    /* Page Colors */
+    --bc:       #333;   /* background color */
+    --tc:       #fff;   /* text color */
+    /* TODO: gradient colors for the background */
+
+    /* Link colors */
+    --link:     #C80;
+    --visited:  #B70;
+    --active:   #D90;
+    --hover:    #EA0;
+
+    /* header colors */
+    --hbc:      #B70;
+    --htc:      #fff;
+    /* We won't need to define header link colors */
+
+    /* footer colors */
+    --fbc:      #B70;   /* should be the same as --hbc */
+    --ftc:      #fff;   /* should be the same as --htc */
+    /* footer link colors */
+    --flink:    #efefef;
+    --fvisited: #dedede;
+    --factive:  #ffffff;
+    --fhover:   #ffffff;
+
+    /* blockquote */
+    /* There should be several blockquote themes depending on the bq type. */
+    --bqac:     #D90;  /* Accent color. */
+    --bqbc:     #A60;  /* Background color */
+    --bqtc:     #fff;  /* Text color */
+
+    /* TODO: main/.card/aside colors */
+    /* TODO: nav colors */
+}

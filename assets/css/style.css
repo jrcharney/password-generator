@@ -1,9 +1,22 @@
 /* File: assets/css/style.css
  */
 
+/* CSS Import rules need to be at the top. */
+@import url("theme.css");       /* Colors */
+@import url("global.css");        /* Stuff that applies to everyone */
+/* @import url("queries.css");    /* Stuff for media queries and RWD */
+/* TODO: Probably should put my media quieres in a file to keep things in order. */
+@import url("header.css");     /* Stuff that goes in the header */
+/* @import url("navbar.css");     /* Stuff that goes in the nav */
+/* @import url("main.css");       /* Stuff that goes in the main */
+ @import url("footer.css");     /* Stuff that goes in the footer */
+/* @import url("gallery.css");    /* Stuff for displaying photos or projects */
+
  /* This is the code that it this project came with.
   * TODO: Even if it would cost me point, replace this ugly crap with what I used in the previous homework.
   */
+
+/*
  *,
  *::before,
  *::after {
@@ -17,24 +30,31 @@
    margin: 0;
    padding: 0;
  }
- 
+ */
+
+/*
  body {
    font-family: sans-serif;
    background-color: #f9fbfd;
  }
- 
+ */
+
+ /*
  .wrapper {
    padding-top: 30px;
    padding-left: 20px;
    padding-right: 20px;
  }
+ */
  
+ /*
  header {
    text-align: center;
    padding: 20px;
    padding-top: 0px;
    color: hsl(206, 17%, 28%);
  }
+ */
  
  .card {
    background-color: hsl(0, 0%, 100%);
@@ -48,6 +68,7 @@
    padding: 30px 40px;
  }
  
+ /*
  .card-header::after {
    content: " ";
    display: block;
@@ -55,6 +76,7 @@
    background: #e7e9eb;
    height: 2px;
  }
+ */
  
  .card-body {
    min-height: 100px;
@@ -64,6 +86,7 @@
    text-align: center;
  }
  
+ /*
  .card-footer::before {
    content: " ";
    display: block;
@@ -77,7 +100,9 @@
    display: block;
    clear: both;
  }
+ */
  
+ /*
  .btn {
    border: none;
    background-color: hsl(360, 91%, 36%);
@@ -123,7 +148,37 @@
    resize: none;
    overflow: hidden;
  }
- 
+ */
+
+.control {}
+.control > label {}
+.control > input[type="range"] {}
+.control > input[type="number"] {}
+.control > input[type="checkbox"] {}
+
+#len_msg {
+  font-size: 10pt;
+  font-weight: bold;
+  color: red;
+}
+
+fieldset {
+  border-radius: 5px;
+}
+
+fieldset > legend {
+  font-weight: bold;
+}
+
+fieldset > dl > dt {
+  font-weight: normal;
+}
+
+fieldset > dl > dd {
+  font-size: smaller;
+}
+
+ /* TODO: Move this to queries.css */
  @media (max-width: 690px) {
    .btn {
      font-size: 1rem;
