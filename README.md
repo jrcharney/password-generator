@@ -49,27 +49,27 @@ THEN the password is either displayed in an alert or written to the page
 * [x] Move `Develop/style.css` to `assets/css/style.css`
 * [x] Move `Develop/script.js` to `assets/js/script.js`
 * [x] Make sure that `index.html` reflects the changes made to those two previous files.
-* [ ] **Modify the code to meet the Acceptable Criteria**
-   * [ ] When the "Generate Password" button is clicked, a series of prompts for passwords are asked.
+* [x] **Modify the code to meet the Acceptable Criteria**
+   * [ ] When the "Generate Password" button is clicked, ~~a series of prompts for passwords are asked.~~
       - UGH! Let's not do that. Alert prompts are so tacky. Let's use a form.
-   * [ ] When propmpted for password criteria, select which criteria to include in the password.
+   * [x] When prompted for password criteria, select which criteria to include in the password.
       - You can't do this in a prompt. Let's use a form.
    * [x] Choose the length of the password between 8 and 128 characters.
       - I used a slider and a number field.
       - I was thinking about adding radio buttons for longer passwords.
       - NOTE: The instructor knows these passwords are not SHA encrypted, right? Propbably should ad a note letting people know that.
-   * [ ] Confirm wheter or not to include lowercase, uppercase, numeric, and/or special characters.
+   * [x] Confirm wheter or not to include lowercase, uppercase, numeric, and/or special characters.
       - A check list would be better.
-   * [ ] Validate each prompt by selecting at least one character type from each set.
-      - Again, this is much easier if we use a checklist
-   * [ ] When all the promps are answered, generate a password tha matches the selected criteria.
+   * [x] Validate each prompt by selecting at least one character type from each set.
+      - Again, this is much easier if we use a character list
+   * [x] When all the prompts are answered, generate a password tha matches the selected criteria.
       - In other words, do some JavaScript to make a password
-   * [ ] When the password is generated, display it in an alert or written on the page.
+   * [x] When the password is generated, display it in an alert or written on the page.
       - I don't know about who wrote this assignement, but I'm keeping my stuff on the page.
       - Bonus: I'm adding a copy button.
       - Also, I'm swapping out all the `alert()`, `confirm()`, `prompt()` with a set of form elements because they look better and have better accessiblity (ARIA) features that we should be using.
-* [ ] **Ensure that your work meets the full list of grading requirements.**
-* [ ] **Reach out ot classmates and instructional support team for help if you need it.**
+* [x] **Ensure that your work meets the full list of grading requirements.**
+* [x] **Reach out ot classmates and instructional support team for help if you need it.**
 * [x] Add a screenshot of this project
 * [x] **Follow the submission instructions.** Submit BOTH of the following for review:
    * [x] The URL of the deployed application.
