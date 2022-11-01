@@ -130,3 +130,8 @@ An easy one-click button copies the password we created to the clipboard for eas
 
 ### ARIA Accessiblity
 I'm not too familiar with [Accessible Rich Internet Application](https://www.w3.org/WAI/ARIA/apg/) <abbr title="Accessible Rich Internet Applications">ARIA</abbr>; I did try my best to apply ARIA tags to some of the interactive elements.
+
+### Easy Theme Setup
+If only HTML was as modular as CSS. Because CSS is so modular, major elements have their own stylesheets which can be imported to a single stylsheet. What's more, variables can be used across those files, which is great because now a new tyle `theme.css` has a `--hue` variable that can set the color scheme across several variables.  Eventually, CSS Math will be added to correct some saturation and lightness as all the colors are in `hsl` format.  It would also be nice to use gradients and transparency (alpha channel).
+
+Need help picking out a color? Try this [CSS Color Converter](https://codepen.io/jrcharney/pen/WNybMBP).

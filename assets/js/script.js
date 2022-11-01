@@ -31,7 +31,7 @@ let css = (el) => (prop, val) => (val === undefined) ? getComputedStyle(el).getP
 
 // Password options
 let pw_options = {
-  length:     16,    // Longer passwords are better
+  size:       16,    // Longer passwords are better
   symbols:    true,  // Use symbols?
   numbers:    true,  // Use numbers?
   uppercases: true,  // Use uppercase letters?
@@ -41,10 +41,49 @@ let pw_options = {
 }
 
 
-const events = ["input","change"];
-events.forEach((ek) => {
-
+const len_events = ["input","change"];
+const len_slide  = qs("#len_slide");
+const len_num    = qs("#len_num");
+const len_msg    = qs("#len_msg");
+//let pw_options.size = 16;   // Default value for length. Might change this to something else later.
+len_events.forEach((ek) => {
+  len_slide.addEventListener(ek,(ev) => {
+    len_num.value = pw_options.size = Number.parseInt(ev.target.value);
+    if(pw_options.size < 16){
+      len_msg.innerText = "Weak password!";
+    } else {
+      len_msg.innerText = "";
+    }
+    //console.log(pw_options.size);
+  });  
+  len_num.addEventListener(ek,(ev) => {
+    len_slide.value = pw_options.size = Number.parseInt(ev.target.value);
+    if(pw_options.size < 16){
+      len_msg.innerText = "Weak password!";
+    } else {
+      len_msg.innerText = "";
+    }
+    //console.log(pw_options.size);
+  });  
 });
+
+let radios = document.getElementsByName("len_major");
+radios.forEach((radio) => {
+  radio.addEventListener("change",(ev) => {
+    pw_options.size = ev.target.value;
+    if(ev.target.id === "use_len_16"){
+      len_slide.disabled = len_num.disabled = false;
+      len_slide.value = len_num.value = pw_options.size;
+    }else{
+      len_slide.disabled = len_num.disabled = true;
+    }
+    //console.log(pw_options.size);
+  });
+});
+
+let checks = document.getElementsByName("pw_options");
+//console.log();
+
 
 // Assignment code here
 
@@ -62,3 +101,26 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+/* How about a button to copy that password */
+
+// Temporarily change text in a button
+function changeText(button_el, text, textToChangeBackTo) {
+  button_el.textContent = text;
+  setTimeout(() => button_el.textContent = textToChangeBackTo, 1000);
+}
+
+// Copy the text in a text field to the clipboard
+function copy(text_el){
+// Select the text field
+text_el.select();
+text_el.setSelectionRange(0, 99999); // For mobile devices
+// Copy the text inside the text field
+navigator.clipboard.writeText(text_el.value);
+}
+
+qs(`#copy`).addEventListener("click",(ev) => {
+  copy(qs(`#password`));
+  const el = ev.target;
+  changeText(el,"Copied!",el.textContent);
+});

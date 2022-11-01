@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="ribbon">
-        <a href="https://github.com/jrcharney/password-generator">Fork on Github</a>
+    <div class="ribbon-container">
+        <div class="ribbon">
+            <a href="https://github.com/jrcharney/password-generator">Fork on Github</a>
+        </div>
     </div>
     <!-- class="wrapper" -->
     <header id="top">
@@ -29,8 +31,8 @@
                     <legend aria-label="Length">Length</legend>
                     <dl>
                         <dt>
-                            <input type="radio" id="use_len_0" name="len_major" value="0"  checked aria-checked="true"/>
-                            <label for="use_len_0" aria-label="128 or less">128 or less</label>
+                            <input type="radio" id="use_len_16" name="len_major" value="16"  checked aria-checked="true"/>
+                            <label for="use_len_16" aria-label="128 or less">128 or less</label>
                             <input type="radio" id="use_len_256" name="len_major" value="256" aria-checked="false" />
                             <label for="use_len_256" aria-label="256">256</label>
                             <input type="radio" id="use_len_512" name="len_major" value="512" aria-checked="false" />
@@ -42,7 +44,7 @@
                         </dt>
                         <dd></dd><!-- this is intentionally blank -->
                         <dt>
-                            <!-- TODO: disable if use_len_0 is not checked -->
+                            <!-- TODO: disable if use_len_16 is not checked -->
                             <label for="len_slide" aria-label="Length of a password (between 8 and 128 characters)">Length</label>
                             <input type="range" id="len_slide" name="len_slide" min="8" max="128" step="1" value="16">
                             <input type="number" id="len_num" name="len_num" min="8" max="128" step="1" value="16">        
@@ -105,6 +107,8 @@
                         id="password"
                         placeholder="Your Secure Password"
                         aria-placeholder="Your Secure Password"
+                        rows="5"
+                        cols="80"
                     ></textarea>
                 </fieldset>
             </div>
@@ -112,6 +116,43 @@
                 <!-- TODO: Should I stick this in the fieldset above? -->
                 <button id="copy" title="Click to copy to clipboard" aria-label="Copy password to clipboard">Copy Password</button>
             </div>
+        </section>
+        <section class="card">
+            <details>
+                <summary>Password Tips</summary>
+                <p>To prevent your passwords from being hacked by social engineering, brute force or dictionary attack methods, and keep your online accounts safe, follow these important tips.</p>
+                <ol>
+                    <li>Do not use the same password or security question and answer for multiple accounts.</li>
+                    <li>Use a password with at least 16 characters in int, including at least one number, at least one uppercase letter, at least one lowercase letter, and one special symbol.</li>
+                    <li>Do not use the names of your families, friends, or pets in your passwords. Also, if you think you are clever and can get away with this still by typing those things but spelled backwards, there's a good chance the hackers though of that too, so don't do that either.</li>
+                    <li>Do not use Zip/postal codes, house numbers, phone numbers, birthdates, ID card numbers, social security numbers, even credit card or PIN numbers, etc. in your passwords.</li>
+                    <li>Do not use any dictionary words in your passwords.</li>
+                    <li>Do not use tow or more similar passwords where most of their characters are the same. If one password is stolen, then it means the other passwords are stolen.</li>
+                    <li><s>Do not use something that can be cloned (but you cannot change) as your passowrd, such as your fingerprints.</s> Actually, it is OK to use fingerprint login. There's plenty of other biometric factors that can be used to prevent fingerprint lifing.</li>
+                    <li>Do not let your web browser (Chrome, Firefox, Safari, Opera, Brave, Edge, etc) store your passwords since all passwords saved in Web browsers can be revealed easily. And don't think that a service like LastPass or other online password storage services are any better, because they have this same problem but without the browser.</li>
+                    <li>Do not log into important accounts on the computers of others, or went connected to a public Wi-Fi hotspot, Tor, free <abbr title="Virtual Private Network">VPN</abbr>, or web proxy. There is no such thing as a good free VPN anyway.</li>
+                    <li>Do not send sensitive information online via unencrypted connections (e.g. <abbr title="Hypertext Transfer Protocol">HTTP</abbr> or <abbr title="File Transfer Protocol">FTP</abbr>), because messages in these connections can be sniffed with very little effort. You should use encrypted connections such as <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr>, <abbr title="Secure File Tranfer Protocol">SFTP</abbr>, FTPS, SMTPS, IPSec whenever possible. Remember to look for the lock (🔒) in the location bar on your browser next to the website address.</li>
+                    <li>When traveling, you can encrypt your Internet connections before they leave your laptop, tablet, mobile phone or router. For example, you can set up a private VPN with protocols such as Wireguard (or IKEv2, OpenVPN, SSTP, L2TP over IPSec) on your own server (hme computer, dedicated server, or <abbr title="Virtual Private Server">VPS</abbr>) and connect to i. Allernatively, you can set up an encrypted <abbr title="Secure Shell">SSH</abbr> tunnel between your computer and your own server and configure your browser to use <abbr title="Socket Secure">SOCKS</abbr> proxy. Then even if someone captures your data as it is transmitted between your device (e.g. laptop or phone) and your server with a packet sniffer, they won't be able to steal your data and passwords from the encrypted streaming data.</li>
+                    <li>It is recommended that you change your passwords every 10 weeks.</li>
+                    <li>It is recommended that you remember a few master passwords, store other passwords in a plain text file and encrypt this file with 7-Zip, GPG, or disk encryption sotware such as BitLocker, or Manage your passwords with a password management software.</li>
+                    <li>Better yet, do it the low-tech way and just ge one of those pocket moleskin notebooks, but use some small stickers to divide every few pages up by the first letter fo each website, and use that to track your passwords with. Keep the notebook secure.</li>
+                    <li>Encrypt and backup your passwords to different locations, then if you lose access to your computer or account, you can retrieve your passwords back quickly.</li>
+                    <li>Turn on Two-Factor Authentication (2FA) whenever possible.</li>
+                    <li>Do not store your critical passwords in the cloud (e.g. Google Drive, Microsoft One Drive). Remember "the cloud" is just someone else's computer and that security on that computer might not be as good as you think it is.</li>
+                    <li>Access important websites from bookmarks directly, otherwise please check the address of the website carefully! Some scammers will try to get you to go to a websie that looks important like your bank, social media, or shopping website, but it could be a spoof with a different address or alternative spelling to get your to log in with your username, email, and password. This is know as phishing.</li>
+                    <li>Most operating systems come with their own firewall and antivirus software. Contrary to what most security experts think, you don't need Norton, McAfee, or Lifelock install on your software as they are considered "bloatware" and many scammers will try to use these softwares to convince you that you need them and that you need to pay their subscription fees. You don't. What you should do is be vigilant.</li>
+                    <li>Download software from reputable sites only, and verify the MD5/SHA1/SHA256 checksum or GPG signature of the installation package whenever possible.</li>
+                    <li>Keep the operating system and web broswer of your device up-to-date with the latest security updates.</li>
+                    <li>If there are important files on your computer, and it can be accessed by others, check if there are nay hardware keyloggers (e.g. wireless keyboard sniffer), software keyloggers, and hidden cameras when you feel it is necessary.</li>
+                    <li>If there are Wi-Fi routers in your home, make sure they are password protected.</li>
+                </ol>
+
+                <blockquote>There a list of other advice I want to put here, but I need to take care of the coding part of this assignment first.</blockquote>
+
+                <h3>How secure is my password?</h3>
+                <p>Perhaps you belive that your passwords are very strong an difficult to hack. But if a hacker has stolen your username and the MD5 have value of your password from a company server, and the rainbow table of the hacker contains this MD5 has, then your password can be cracked quickly.</p>
+                <p>To check the strength of yyour password and know whether they're inside the popular rainbow tables, you can convert your passwords to MD5 hashes on a MD5 hash generator, then decrypt your password by submitting these hashes to an online MD5 decryption service.</p>
+            </details>
         </section>
     </main>
     <footer>
