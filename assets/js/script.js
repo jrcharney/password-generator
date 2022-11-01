@@ -93,6 +93,7 @@ function setOptions(checks){
   // Set each value found to true
   vals.forEach((val) => {pw_options.opts[val] = keys.includes(val);});
   //console.log(pw_options.opts);
+  // TODO: return the number of checkboxes checked? (Or we could count the number of true values.)
 } 
 
 let checks = document.getElementsByName("pw_checks");
@@ -105,6 +106,72 @@ checks.forEach((check) => {
 });
 
 // Assignment code here
+function generatePassword(){
+  // TODO: Don't generate a password if none of the checkboxes are checked
+  //let password = "How are you, gentlemen. All your base are belong to us.";
+  let password = [];
+  let charset = "";   // Let's start with an empty character set;
+
+  let charsets = {
+    symbols:   "!#$%&*+-=?@^_",             // Excludes similar and amgbigous symbols 
+    numbers:   "23456789",                  // Excludes similar and ambiguous numbers
+    uppercase: "ABCDEFGHJKLMNPQRSTUVWXYZ",  // Excludes similar and ambiguous letters
+    lowercase: "abcdefghjkmnpqrstuvwxyz",   // Excludes similar and ambiguous letters
+    similar:   {                            // We need to add these bases on what the answer is for similar sets
+      symbols:  "|",                        // similar symbols
+      numbers:  "01",                        // similar numbers
+      uppercase: "IO",                      // similar uppercase
+      lowercase: "ilo"                      // similar lowercase
+    },
+    ambiguous: "{}[]()\/'\"`~,;:.<>\\"      // Excludes similar symbols
+  }
+
+  // Build our character set
+  if(pw_options.opts.symbols){
+    charset += charsets.symbols;
+    if(pw_options.opts.similar){
+      charset += charsets.similar.symbols;
+    }
+  }
+  if(pw_options.opts.numbers){
+    charset += charsets.numbers;
+    if(pw_options.opts.similar){
+      charset += charsets.similar.numbers;
+    }
+  }
+  if(pw_options.opts.uppercase){
+    charset += charsets.uppercase;
+    if(pw_options.opts.similar){
+      charset += charsets.similar.uppercase;
+    }
+  }
+  if(pw_options.opts.lowercase){
+    charset += charsets.lowercase;
+    if(pw_options.opts.similar){
+      charset += charsets.similar.lowercase;
+    }
+  }
+  if(pw_options.opts.ambiguous){
+    charset += charsets.ambiguous;
+    // No similars here
+  }
+
+  if(charset.length === 0){
+    return "I need you to check at least two of the checkboxes!";
+  }
+
+  password = charset;
+  /*
+  for(let i = 0; i < pw_options.size; i++){
+    // Randomly pick a password from the characters in our character set.
+    password.push();
+  }
+  */
+
+  //password = password.join("");
+
+  return password;
+}
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
