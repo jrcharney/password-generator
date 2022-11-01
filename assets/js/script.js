@@ -32,12 +32,14 @@ let css = (el) => (prop, val) => (val === undefined) ? getComputedStyle(el).getP
 // Password options
 let pw_options = {
   size:       16,    // Longer passwords are better
-  symbols:    true,  // Use symbols?
-  numbers:    true,  // Use numbers?
-  uppercases: true,  // Use uppercase letters?
-  lowercases: true,  // Use lowercase letters?
-  similar:    false, // Use similar characters?
-  ambiguous:  false  // Use ambiguous characters?
+  opts: {
+    symbols:   true,  // Use symbols?
+    numbers:   true,  // Use numbers?
+    uppercase: true,  // Use uppercase letters?
+    lowercase: true,  // Use lowercase letters?
+    similar:   false, // Use similar characters?
+    ambiguous: false  // Use ambiguous characters?
+  }
 }
 
 
@@ -81,9 +83,26 @@ radios.forEach((radio) => {
   });
 });
 
-let checks = document.getElementsByName("pw_options");
-//console.log();
+function setOptions(checks){
+  // Set all our our options to false
+  pw_options.opts = Object.fromEntries(Object.entries(pw_options.opts).map(([k,v]) => [k, false]));
+  // Get the list of options
+  let keys = Object.keys(pw_options.opts);
+  // Get the list of found options
+  let vals = Array.from(checks).filter((x) => x.checked === true).map((x) => x.value);
+  // Set each value found to true
+  vals.forEach((val) => {pw_options.opts[val] = keys.includes(val);});
+  //console.log(pw_options.opts);
+} 
 
+let checks = document.getElementsByName("pw_checks");
+//console.log(Array.from(checks).filter((x) => x.checked === true).map((x) => x.value));
+checks.forEach((check) => {
+  check.addEventListener("change",(ev) => {
+    //console.log(Array.from(checks).filter((x) => x.checked === true).map((x) => x.value));
+    setOptions(checks);
+  });
+});
 
 // Assignment code here
 
