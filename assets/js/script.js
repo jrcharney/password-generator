@@ -105,6 +105,13 @@ checks.forEach((check) => {
   });
 });
 
+// Borrowed this from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
+
 // Assignment code here
 function generatePassword(){
   // TODO: Don't generate a password if none of the checkboxes are checked
@@ -119,7 +126,7 @@ function generatePassword(){
     lowercase: "abcdefghjkmnpqrstuvwxyz",   // Excludes similar and ambiguous letters
     similar:   {                            // We need to add these bases on what the answer is for similar sets
       symbols:  "|",                        // similar symbols
-      numbers:  "01",                        // similar numbers
+      numbers:  "01",                       // similar numbers
       uppercase: "IO",                      // similar uppercase
       lowercase: "ilo"                      // similar lowercase
     },
@@ -160,15 +167,14 @@ function generatePassword(){
     return "I need you to check at least two of the checkboxes!";
   }
 
-  password = charset;
-  /*
+  charset = charset.split("");  // split our string apart
+  //password = charset;
+  // Randomly pick a password from the characters in our character set.
   for(let i = 0; i < pw_options.size; i++){
-    // Randomly pick a password from the characters in our character set.
-    password.push();
-  }
-  */
+    password.push(charset[getRandomInt(0,charset.length)]);
+  };
 
-  //password = password.join("");
+  password = password.join(""); // join all the letters together
 
   return password;
 }
