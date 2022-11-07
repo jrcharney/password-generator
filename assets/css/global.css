@@ -33,7 +33,7 @@ summary {
     cursor: pointer;
 }
 
-/* I was under the impression that by using a defintion list (dl), the defintion terms (dt) would be bold. Apparently, I was wrong about that. This should fix it. */
+/* I was under the impression that by using a definition list (dl), the definition terms (dt) would be bold. Apparently, I was wrong about that. This should fix it. */
 dt {
     font-weight: bold;
 }
@@ -54,42 +54,49 @@ blockquote {
 }
 
 /* Adding a ribbon */
-.ribbon-container {
-    position: relative;
-}
-
 .ribbon {
     position: absolute;
+    overflow: hidden;
+    top: 0px;
+    right: 0px;
+    width: 200px;
+    height: 200px;
+    z-index: 100;
+    /* background: #0f0; */
+}
+
+.ribbon > span {
+    position: absolute;
+    display: block;
+    width: 300px;
+    left: -30px;
+    top: 50px;
+
     text-align: center;
     line-height: 50px;
     letter-spacing: 1px;
     background-color: hsl(260,73%,50%); /* #D90; */ /* TODO: Change this color to something that reflects the theme better */
     color: #f0f0f0;
     box-shadow: -5px 5px 3px rgba(0,0,0,.3);
-    width: 300px;
-    top: 55px;
-    right: -70px;
-    left: auto;
-    transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    overflow: hidden;
+    transform: rotate(45deg);
 }
-  
+
 /* TODO: Change to theme colors */
-.ribbon a {
+.ribbon > span > a {
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
-.ribbon a[href]:link{
+.ribbon > span > a[href]:link{
     color: #efefef;
 }
-.ribbon a[href]:visited{
+.ribbon > span > a[href]:visited{
     color: #efefef;
 }
-.ribbon a[href]:active{
+.ribbon > span > a[href]:active{
     color: #ffffff;
 }
-.ribbon a[href]:hover{
+.ribbon > span > a[href]:hover{
     color: #ffffff;
 }
